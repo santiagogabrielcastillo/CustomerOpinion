@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Stores-Customer experience{% endblock %}
+
+{% block content %}
+<div class="content  mt-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <a class="navbar-brand" href="{{ url_for('store.index') }}">Stores</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                {% for store in stores %}
+                <a class="nav-item nav-link" href="{{ url_for('store.store', store_id=store.id) }}">{{ store.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="jumbotron">
+    <h1 class="display-4">Stores</h1>
+    {% if not session['email'] %}
+    <p class="lead">Here you have the list of the available stores where you can give us your opinion.</p>
+    <hr class="my-4" />
+    <p>If you don't find the store you are looking for, just talk send us a message :)</p>
+    {% endif %}
+    {% if session['email'] %}
+    <p>As admin, you can create new stores and add new dealers to existing stores too.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

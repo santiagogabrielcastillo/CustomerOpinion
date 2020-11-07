@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Admin Menu-New Store{% endblock %}
+
+{% block content %}
+<div class="content  mt-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <a class="navbar-brand" href="{{ url_for('admin.index') }}">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{ url_for('admin.list_stores')}}">Stores</a>
+                <a class="nav-item nav-link" href="{{ url_for('admin.list_dealers')}}">Dealers</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <h1>Add new store</h1>
+<form method="POST">
+            <div class="form-group">
+                <h3>Store name</h3>
+                <input type="text" name="name" placeholder="Amazon"/>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</div>
+{% endblock %}

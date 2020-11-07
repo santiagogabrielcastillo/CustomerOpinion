@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Customer experience{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Thank you!</h1>
+    {% if not session['email'] %}
+    <p class="lead">Your feedback was submitted successfully.</p>
+    <hr class="my-4" />
+    <p>We really appreciate your opinion and we will try to improve day by day :)</p>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %} {{ shop.name }} {% endblock %}
+
+{% block content %}
+<div class="content  mt-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <a class="navbar-brand" href="{{ url_for('store.index') }}">Stores</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                {% for store in stores %}
+                <a class="nav-item nav-link" href="{{ url_for('store.store', store_id=store.id) }}">{{ store.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <h1>{{ shop.name }}</h1>
+        <img src="../static/consumer.png" alt="Customer experience" class="logo">
+        <form method="POST">
+            <div class="form-group">
+                <h3>Customer Name</h3>
+                <input type="text" name="customer_name" placeholder="Please enter your name"/>
+            </div>
+            <div class="form-group">
+                <h3>Customer Email</h3>
+                <input type="text" name="customer_email" placeholder="Please enter your email"/>
+            </div>
+            <div class="form-group">
+                <h3>Dealer Name</h3>
+                <select name="dealer">
+                    <option value="">Select dealer</option>
+                    {% for dealer in dealers %}
+                    <option value="{{ dealer.name }}">{{ dealer.name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="form-group">
+                    <input type="radio" name="rating" value="1" /> 1
+                    <input type="radio" name="rating" value="2" /> 2
+                    <input type="radio" name="rating" value="3" /> 3
+                    <input type="radio" name="rating" value="4" /> 4
+                    <input type="radio" name="rating" value="5" /> 5
+                    <input type="radio" name="rating" value="6" /> 6
+                    <input type="radio" name="rating" value="7" /> 7
+                    <input type="radio" name="rating" value="8" /> 8
+                    <input type="radio" name="rating" value="9" /> 9
+                    <input type="radio" name="rating" value="10" checked /> 10
+                </div>
+                <div class="form-group">
+                    <h3>Comments about the experience</h3>
+                    <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Tell us what you liked and/or did not like"></textarea>
+                </div>
+                <button class="btn" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

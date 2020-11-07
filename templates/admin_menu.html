@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Admin Menu-Customer experience{% endblock %}
+
+{% block content %}
+<div class="content  mt-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <a class="navbar-brand" href="{{ url_for('admin.index') }}">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavAltMarkup" class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{ url_for('admin.list_stores')}}">Stores</a>
+                <a class="nav-item nav-link" href="{{ url_for('admin.list_dealers')}}">Dealers</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="jumbotron">
+    <h1 class="display-4">Customer Experience</h1>
+    {% if not session['email'] %}
+    <p class="lead">Here you can give us your opinion about your experience buying in different stores</p>
+    <hr class="my-4" />
+    <p>Just choose the store, the dealer you've talk to and rate his/her work :)</p>
+    {% endif %}
+    {% if session['email'] %}
+    <p>As admin, you can create new stores and add new dealers to existing stores too.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

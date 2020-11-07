@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Home-Customer experience{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Customer Experience</h1>
+    {% if not session['email'] %}
+    <p class="lead">Here you can give us your opinion about your experience buying in different stores</p>
+    <hr class="my-4" />
+    <p>Just choose the store, the dealer you've talk to and rate his/her work :)</p>
+    {% endif %}
+    {% if session['email'] %}
+    <p>As admin, you can create new stores and add new dealers to existing stores too.</p>
+    <p>To access the menu, go to the <a href="{{ url_for('admin.index') }}">ADMIN</a> section.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
